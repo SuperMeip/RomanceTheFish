@@ -1,0 +1,36 @@
+@Player:0
+##
+
+@Ghost:1
+<HAPPY>"Hi I'm a Test Ghost"
+<BASHFUL>"I'm not in the main game but I'm here to help anyway"
++Ghost
+*METGHOST=TRUE
+<HAPPY>"I Have something for you if you want it"
+#? Take It%002:Don't Take it%003
+
+@Ghost:2
+<EXCITED>"Here!..."
+[TAKE:APPLE]
+<EXCITED>"Oh wow! Y..You took it! It's an apple!"
+*TOOKAPPLE=TRUE
++Ghost
+<HAPPY>"I'm so glad you liked it!"
+#<004>
+
+@Ghost:3
+-Ghost
+<SAD>"Oh sorry I thought you'd like it"
+*REFUSEDAPPLE=TRUE
+#<004>
+
+@Ghost:4
+#!APPLE:005:006
+
+@Ghost:5
+<HAPPY> You Took The Apple
+##
+
+@Ghost:6
+<SAD>You Didn't Take The apple
+##
