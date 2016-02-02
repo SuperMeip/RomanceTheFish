@@ -19,8 +19,8 @@ public class MessageManager : MonoBehaviour {
     public int currentDialog;
     public int nextIsItem;
     public string currentText;
-    public static bool DialogOpen;
-    public static bool ChoiceMode;
+    public  bool DialogOpen;
+    public  bool ChoiceMode;
     public int startDialog = 001;
     void Awake()
     {
@@ -28,42 +28,47 @@ public class MessageManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        DialogStart();
+        //DialogStart();
         ChoiceMode = false;
-        currentDialog = startDialog;
+        TextCanvas.SetActive(false);
+        //currentDialog = startDialog;
         RetreiveDialogs();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        DebugText.text = currentDialog + " : " + currentMessage;
-        if (!ChoiceMode)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (DialogOpen)
         {
-            currentText = PlayLine(Dialogs[currentDialog]);
-            if (Input.GetKeyDown(KeyCode.Space) && DialogOpen)
-                upMessage();
+            DebugText.text = currentDialog + " : " + currentMessage;
+            if (!ChoiceMode)
+            {
+                currentText = PlayLine(Dialogs[currentDialog]);
+                if (Input.GetKeyDown(KeyCode.Space) && DialogOpen)
+                    upMessage();
+            }
+            else
+            {
+                currentText = Dialogs[currentDialog].EndChoice.ListChoices();
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    Choose(0);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    Choose(1);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3) && Dialogs[currentDialog].EndChoice.ChoiceCount() > 2)
+                {
+                    Choose(2);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha4) && Dialogs[currentDialog].EndChoice.ChoiceCount() > 3)
+                {
+                    Choose(3);
+                }
+            }
         }
-        else
-        {
-            currentText = Dialogs[currentDialog].EndChoice.ListChoices();
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Choose(0);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                Choose(1);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3) && Dialogs[currentDialog].EndChoice.ChoiceCount() > 2)
-            {
-                Choose(2);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4) && Dialogs[currentDialog].EndChoice.ChoiceCount() > 3)
-            {
-                Choose(3);
-            }
-        }
-	}
+    }
 
     public void Choose(int choice)
     {
@@ -225,6 +230,17 @@ public class MessageManager : MonoBehaviour {
 
     public void DialogStart()
     {
+        NextArrow.SetActive(true);
+        TextCanvas.SetActive(true);
+        DialogOpen = true;
+        currentMessage = 0;
+        StopAllCoroutines();
+        StartCoroutine(AnimateText());
+    }
+
+    public void DialogStart(int ID)
+    {
+        currentDialog = ID;
         NextArrow.SetActive(true);
         TextCanvas.SetActive(true);
         DialogOpen = true;
