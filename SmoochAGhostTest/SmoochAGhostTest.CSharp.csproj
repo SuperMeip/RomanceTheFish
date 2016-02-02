@@ -74,16 +74,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Booleans.cs" />
-    <Compile Include="Assets\Character.cs" />
-    <Compile Include="Assets\CharacterInfo.cs" />
-    <Compile Include="Assets\CharacterScript.cs" />
-    <Compile Include="Assets\CharacterSpriteManager.cs" />
-    <Compile Include="Assets\Message.cs" />
-    <Compile Include="Assets\MessageManager.cs" />
-    <Compile Include="Assets\PlayerManager.cs" />
-    <Compile Include="Assets\PlayerMove.cs" />
-    <Compile Include="Assets\Test.cs" />
+    <Compile Include="Assets\Message Scripts\Booleans.cs" />
+    <Compile Include="Assets\Message Scripts\Message.cs" />
+    <Compile Include="Assets\Message Scripts\MessageManager.cs" />
+    <Compile Include="Assets\NPC Scripts\Character.cs" />
+    <Compile Include="Assets\NPC Scripts\CharacterInfo.cs" />
+    <Compile Include="Assets\NPC Scripts\CharacterScript.cs" />
+    <Compile Include="Assets\NPC Scripts\CharacterSpriteManager.cs" />
+    <Compile Include="Assets\Player Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\Player Scripts\PlayerMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Dialogs\test.txt" />

@@ -6,6 +6,7 @@ public enum Facing {Up, Down, Left, Right}
 
 public class PlayerMove : MonoBehaviour {
 
+    public LayerMask layers;
     public Facing direction;
     public float moveSpeed;
     public Vector2 location;
@@ -28,22 +29,26 @@ public class PlayerMove : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.D) && tr.position == position)
             {
+                if(CanMove(Vector3.right))
+                    direction = Facing.Right;
                 position += Vector3.right * 0.32f;
-                direction = Facing.Right;
             }
             else if (Input.GetKey(KeyCode.A) && tr.position == position)
             {
-                position += Vector3.left * 0.32f;
+                if (CanMove(Vector3.left))
+                    position += Vector3.left * 0.32f;
                 direction = Facing.Left;
             }
             else if (Input.GetKey(KeyCode.W) && tr.position == position)
             {
-                position += Vector3.up * 0.32f;
+                if (CanMove(Vector3.up))
+                    position += Vector3.up * 0.32f;
                 direction = Facing.Up;
             }
             else if (Input.GetKey(KeyCode.S) && tr.position == position)
             {
-                position += Vector3.down * 0.32f;
+                if (CanMove(Vector3.down))
+                    position += Vector3.down * 0.32f;
                 direction = Facing.Down;
             }
 
@@ -51,4 +56,12 @@ public class PlayerMove : MonoBehaviour {
         }
     }
 
+    bool CanMove(Vector3 direction)
+    {
+        if(Physics2D.Raycast(transform.position, direction, 0.32f, layers))
+        {
+            return false;
+        }
+        return true;
+    }
 }
