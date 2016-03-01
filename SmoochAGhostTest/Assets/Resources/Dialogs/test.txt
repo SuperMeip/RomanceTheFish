@@ -21,6 +21,8 @@
 @Ghost:3
 -Ghost
 <SAD>"Oh sorry I thought you'd like it"
+[GIVE:APPLE]
+*TOOKAPPLE=FALSE
 *REFUSEDAPPLE=TRUE
 #<004>
 
@@ -33,4 +35,5 @@
 
 @Ghost:6
 <SAD>You Didn't Take The apple
+*GHOSTON=FALSE
 ##

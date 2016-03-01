@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 525197190937b5544917e90cff16618c
-timeCreated: 1454003828
+timeCreated: 1456359572
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,8 @@ TextureImporter:
     21300002: EXCITED
     21300004: SAD
     21300006: BASHFUL
+    21300008: NEUTRAL
+    21300010: ANGRY
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -91,6 +93,26 @@ TextureImporter:
         y: 0
         width: 127
         height: 124
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: NEUTRAL
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 5
+        width: 131
+        height: 123
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ANGRY
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 126
+        width: 125
+        height: 130
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
